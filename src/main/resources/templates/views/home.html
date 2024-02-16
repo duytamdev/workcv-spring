@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+<head>
+    <th:block th:insert="fragments/common/layout :: head"></th:block>
+    <title>Work CV</title>
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+</head>
+<body>
+<th:block th:include="fragments/nav-header :: nav"></th:block>
+<div class="hero-wrap img" style="background-image: url(user/assets/images/bg_1.jpg);">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row d-md-flex no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-10 d-flex align-items-center ">
+                <div class="text text-center pt-5 mt-md-5">
+                    <p class="mb-4">Tìm việc làm, Cơ hội việc làm và Nghề nghiệp</p>
+                    <h1 class="mb-5">Cách dễ dàng nhất để có được công việc mới của bạn</h1>
+                    <div class="ftco-counter ftco-no-pt ftco-no-pb">
+                        <div class="row">
+                            <div class="col-md-4 d-flex justify-content-center counter-wrap ">
+                                <div class="block-18">
+                                    <div class="text d-flex">
+                                        <div class="icon mr-2">
+                                            <span class="flaticon-visitor"></span>
+                                        </div>
+                                        <div class="desc text-left">
+                                            <strong class="number" data-number="46" th:text="${numberCandidate}"></strong>
+                                            <span>Ứng cử viên</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 d-flex justify-content-center counter-wrap ">
+                                <div class="block-18 text-center">
+                                    <div class="text d-flex">
+                                        <div class="icon mr-2">
+                                            <span class="flaticon-visitor"></span>
+                                        </div>
+                                        <div class="desc text-left">
+                                            <strong class="number" data-number="450" th:text="${numberCompany}"></strong>
+                                            <span>Công ty</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 d-flex justify-content-center counter-wrap">
+                                <div class="block-18 text-center">
+                                    <div class="text d-flex">
+                                        <div class="icon mr-2">
+                                            <span class="flaticon-resume"></span>
+                                        </div>
+                                        <div class="desc text-left">
+                                            <strong class="number" data-number="80000" th:text="${numberRecruitment}"></strong>
+                                            <span>Tuyển dụng</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <th:block th:include="fragments/common/layout :: search"></th:block>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+
+            <div style="display: block" class="col-md-7 heading-section text-center">
+                <span class="subheading">Danh mục công việc</span>
+                <h2 class="mb-0">Top Danh Mục</h2>
+            </div>
+        </div>
+        <div class="row">
+            <th:block th:each="categorie : ${categories}">
+            <div class="col-md-3 ">
+                <ul class="category text-center">
+
+                    <li><a style="text-decoration: none !important;" th:href="${'/recruitment/category/'}+${categorie.id}"> <p th:text="${categorie.name}"></p><span class="number" th:text="${categorie.numberChoose}"></span> <span>Vị trí</span><i class="ion-ios-arrow-forward"></i></a></li>
+                </ul>
+            </div>
+            </th:block>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section services-section">
+    <div class="container">
+        <div class="row d-flex">
+            <div class="col-md-3 d-flex align-self-stretch ">
+                <div class="media block-6 services d-block">
+                    <div class="icon"><span class="flaticon-resume"></span></div>
+                    <div class="media-body">
+                        <h3 class="heading mb-3">Tìm kiếm hàng triệu việc làm</h3>
+                        <p>Một con sông nhỏ tên là Duden chảy qua nơi ở và nguồn cung cấp của họ.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex align-self-stretch ">
+                <div class="media block-6 services d-block">
+                    <div class="icon"><span class="flaticon-team"></span></div>
+                    <div class="media-body">
+                        <h3 class="heading mb-3">Dễ dàng quản lý công việc</h3>
+                        <p>Một con sông nhỏ tên là Duden chảy qua nơi ở và nguồn cung cấp của họ.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex align-self-stretch ">
+                <div class="media block-6 services d-block">
+                    <div class="icon"><span class="flaticon-career"></span></div>
+                    <div class="media-body">
+                        <h3 class="heading mb-3">Top Nghề nghiệp</h3>
+                        <p>Một con sông nhỏ tên là Duden chảy qua nơi ở và nguồn cung cấp của họ.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex align-self-stretch ">
+                <div class="media block-6 services d-block">
+                    <div class="icon"><span class="flaticon-employees"></span></div>
+                    <div class="media-body">
+                        <h3 class="heading mb-3">Ứng viên Chuyên gia Tìm kiếm</h3>
+                        <p>Một con sông nhỏ tên là Duden chảy qua nơi ở và nguồn cung cấp của họ.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 pr-lg-5">
+                <div class="row justify-content-center pb-3">
+                    <div class="col-md-12 heading-section ">
+                        <span class="subheading">CÔNG VIỆC ĐƯỢC NHIỀU NGƯỜI ỨNG TUYỂN</span>
+                        <h2 class="mb-4">Các bài đăng về việc làm nổi bật</h2>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <th:block th:each="recruitment : ${recruitments}">
+                        <div class="col-md-12 ">
+                            <div class="job-post-item p-4 d-block d-lg-flex align-items-center">
+                                <div class="one-third mb-4 mb-md-0">
+                                    <div class="job-post-item-header align-items-center">
+                                        <span class="subadge" th:text="${recruitment.type}"></span>
+                                        <h2 class="mr-3 text-black" ><a th:text="${recruitment.title}" th:href="${'/recruitment/detail/'} +${recruitment.id}"></a></h2>
+                                    </div>
+                                    <div class="job-post-item-body d-block d-md-flex">
+                                        <div class="mr-3"><span class="icon-layers"></span> <a href="#" th:text="${recruitment.company.companyName}" ></a></div>
+                                        <div><span class="icon-my_location"></span> <span th:text="${recruitment.address}"></span></div>
+                                    </div>
+                                </div>
+                                <input type="hidden" th:id="${'idRe'}+${recruitment.id}" th:value="${recruitment.id}">
+                                <div class="one-forth ml-auto d-flex align-items-center mt-4 md-md-0">
+                                    <div >
+                                        <a  th:if="${#authorization.expression('isAuthenticated()')}"   th:onclick="'save('+${recruitment.id}+')'" class="icon text-center d-flex justify-content-center align-items-center icon mr-2">
+                                            <span class="icon-heart"></span>
+                                        </a>
+                                        <a th:unless="${#authorization.expression('isAuthenticated()')}" onclick="showNotiLogin()" class="icon text-center d-flex justify-content-center align-items-center icon mr-2">
+                                            <span class="icon-heart"></span>
+                                        </a>
+                                    </div>
+                                    <a th:if="${#authorization.expression('hasRole(''RECRUITER'')')}" onclick="showNotiLogin('Bạn là doanh nghiệp mà')" class="btn btn-primary py-2">Apply Job</a>
+                                   <div th:unless="${#authorization.expression('hasRole(''RECRUITER'')')}">
+                                       <a  th:if="${#authorization.expression('isAuthenticated()')}" data-toggle="modal" th:data-target="${'#exampleModal'}+${recruitment.id}" class="btn btn-primary py-2">Apply Job</a>
+                                       <a  th:unless="${#authorization.expression('isAuthenticated()')}" onclick="showNotiLogin()" class="btn btn-primary py-2">Apply Job</a>
+                                   </div>
+                                </div>
+                            </div>
+                        </div><!-- end -->
+                        <!-- Modal -->
+                        <div class="modal fade" th:id="${'exampleModal'}+${recruitment.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Ứng tuyển: <span th:text="${recruitment.title}"></span></h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <form th:method="post" th:action="@{/user/apply-job}">
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <select th:id="${'choose'}+${recruitment.id}" th:onchange="'choosed(' +${recruitment.id}+ ')'" class="form-control" aria-label="Default select example">
+                                                        <option selected>Chọn phương thức nộp</option>
+                                                        <option value="1">Dùng cv đã cập nhật</option>
+                                                        <option value="2">Nộp cv mới</option>
+                                                    </select>
+
+                                                </div>
+                                                <div th:id="${'loai1'}+${recruitment.id}" style="display:none" class="col-12">
+                                                    <label for="fileUpload"
+                                                           class="col-form-label">Giới thiệu:</label>
+                                                    <textarea rows="10" cols="3" class="form-control"  th:id="${'text'}+${recruitment.id}" >
+
+                                                    </textarea>
+                                                </div>
+                                                <div th:id="${'loai2'}+${recruitment.id}" style="display:none" class="col-12">
+
+                                                    <label for="fileUpload"
+                                                           class="col-form-label">Chọn cv:</label>
+                                                    <input type="file" class="form-control"
+                                                           th:id="${'fileUpload'}+${recruitment.id}" name="file"   required>
+                                                    <label for="fileUpload"
+                                                           class="col-form-label">Giới thiệu:</label>
+                                                    <textarea rows="10" cols="3" class="form-control"  th:id="${'text'}+${recruitment.id}" >
+
+                                                    </textarea>
+                                                </div>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                                <button type="button" th:id="${'button1'}+${recruitment.id}" style="display: none" th:onclick="'apply1(' +${recruitment.id}+ ')'" class="btn btn-primary">Nộp</button>
+                                                <button type="button" th:id="${'button2'}+${recruitment.id}" style="display: none" th:onclick="'apply(' +${recruitment.id}+ ')'" class="btn btn-primary">Nộp</button>
+                                            </div>
+                                        </div>
+                                    </form>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </th:block>
+
+                </div>
+            </div>
+            <div class="col-lg-3 sidebar">
+                <div class="row justify-content-center pb-3">
+                    <div class="col-md-12 heading-section ">
+                        <h2 class="mb-4">Công ty nổi bật</h2>
+                    </div>
+                </div>
+                <th:block th:each="company : ${companies}">
+                <div class="sidebar-box">
+                    <div class="">
+                        <a th:href="${'/user/detail-company/'}+${company.company.id}" class="company-wrap"><img th:src="${company.company.logoPath}" class="img-fluid" alt="Colorlib Free Template"></a>
+                        <div class="text p-3">
+                            <h3><a th:href="${'/user/detail-company/'}+${company.company.id}" th:text="${company.company.companyName}"></a></h3>
+                            <p><span class="number" style="color: black" th:text="${company.recruitmentCount}"></span> <span>Vị trí ứng tuyển</span></p>
+                        </div>
+                    </div>
+                </div>
+                </th:block>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    var csrfToken = $("meta[name='_csrf']").attr("content");
+    var csrfHeader = $("meta[name='_csrf_header']").attr("content");
+    function save(id){
+        var name = "#idRe" +id;
+        var idRe = $(name).val();
+        var formData = new FormData();
+        formData.append('idRe', idRe);
+        $.ajax(
+            {
+                type: 'POST',
+                url: '/like-recruitment',
+                contentType: false,
+                processData: false,
+                data: formData,
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader(csrfHeader, csrfToken);
+                },
+                success: function (data) {
+                    console.log(data);
+
+                     if(data == "ok"){
+                        swal({
+                            title: 'Lưu thành công!',
+                            /* text: 'Redirecting...', */
+                            icon: 'success',
+                            timer: 3000,
+                            buttons: true,
+                            type: 'success'
+                        })
+                    }else{
+                        swal({
+                            title: 'Bạn đã lưu bài này rồi!',
+                            /* text: 'Redirecting...', */
+                            icon: 'error',
+                            timer: 3000,
+                            buttons: true,
+                            type: 'error'
+                        })
+                    }
+                },
+                error: function (err) {
+                    alert(err.toString());
+                }
+            }
+        )
+    }
+
+    function choosed(id){
+        var name = '#choose' + id;
+        var name1 = 'loai1' + id;
+        var name2 = 'loai2' + id;
+        var button1 = 'button1' + id;
+        var button2 = 'button2' + id;
+        var giaitri = $(name).val();
+        if(giaitri == 1){
+            document.getElementById(name1).style.display = 'block'
+            document.getElementById(name2).style.display = 'none'
+            document.getElementById(button1).style.display = 'block'
+            document.getElementById(button2).style.display = 'none'
+        }else{
+            document.getElementById(name2).style.display = 'block'
+            document.getElementById(name1).style.display = 'none'
+            document.getElementById(button2).style.display = 'block'
+            document.getElementById(button1).style.display = 'none'
+        }
+    }
+
+    function apply(id){
+        var name = "#idRe" +id;
+        var nameModal = "#exampleModal" +id;
+        var nameFile = "#fileUpload"+id;
+        var nameText = "#text" +id;
+        var idRe = $(name).val();
+        var textvalue = $(nameText).val();
+        var fileUpload = $(nameFile).get(0);
+        var files = fileUpload.files;
+        var formData = new FormData();
+        formData.append('file', files[0]);
+        formData.append('idRe', idRe);
+        formData.append('note', textvalue);
+        if(files[0] == null){
+            swal({
+                title: 'Bạn cần phải chọn cv!',
+                /* text: 'Redirecting...', */
+                icon: 'error',
+                timer: 3000,
+                buttons: true,
+                type: 'error'
+            })
+        } else {
+            $.ajax(
+                {
+                    type: 'POST',
+                    url: '/api/apply-job',
+                    contentType: false,
+                    processData: false,
+                    data: formData,
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader(csrfHeader, csrfToken);
+                    },
+                    success: function (data, textStatus, xhr) {
+                        console.log(xhr)
+                        if (data == "false") {
+                            swal({
+                                title: 'Bạn đã ứng tuyển vị trí này !',
+                                /* text: 'Redirecting...', */
+                                icon: 'error',
+                                timer: 3000,
+                                buttons: true,
+                                type: 'error'
+                            })
+                        } else if (data == "true") {
+                            swal({
+                                title: 'Ứng tuyển thành công!',
+                                /* text: 'Redirecting...', */
+                                icon: 'success',
+                                timer: 3000,
+                                buttons: true,
+                                type: 'success'
+                            })
+                            $(nameModal).modal('hide');
+                            $('#fileUpload').val("");
+                        }
+                    },
+                    error: function (err) {
+                        console.log(err)
+                        alert(err);
+                    }
+                }
+            )
+        }
+
+    }
+    function showNotiLogin(title){
+        swal({
+            title: title?title:'Bạn cần phải đăng nhập!',
+            /* text: 'Redirecting...', */
+            icon: 'error',
+            timer: 3000,
+            buttons: true,
+            type: 'error'
+        })
+    }
+    function apply1(id){
+        var name = "#idRe" +id;
+        var nameModal = "#exampleModal" +id;
+        var nameText = "#text" +id;
+        var idRe = $(name).val();
+        var textvalue = $(nameText).val();
+        var formData = new FormData();
+        formData.append('idRe', idRe);
+        formData.append('note', textvalue);
+        $.ajax(
+            {
+                type: 'POST',
+                url: '/api/apply-job1',
+                contentType: false,
+                processData: false,
+                data: formData,
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader(csrfHeader, csrfToken);
+                },
+                success: function (data) {
+                    if(data=="null-cv"){
+                        swal({
+                            title: 'Bạn cần phải cập nhật cv!',
+                            /* text: 'Redirecting...', */
+                            icon: 'error',
+                            timer: 3000,
+                            buttons: true,
+                            type: 'error'
+                        })
+                    }
+                    if(data == "false"){
+                        swal({
+                            title: 'Bạn đã ứng tuyển vị trí này !',
+                            /* text: 'Redirecting...', */
+                            icon: 'error',
+                            timer: 3000,
+                            buttons: true,
+                            type: 'error'
+                        })
+                    }else if(data == "true"){
+                        swal({
+                            title: 'Ứng tuyển thành công!',
+                            /* text: 'Redirecting...', */
+                            icon: 'success',
+                            timer: 3000,
+                            buttons: true,
+                            type: 'success'
+                        })
+                        $(nameModal).modal('hide');
+                        $('#fileUpload').val("");
+                    }
+                },
+                error: function (err) {
+                    console.log(err)
+                    alert(err);
+                }
+            }
+        )
+
+
+    }
+</script>
+
+
+<!--<footer th:replace="public/fragments :: footer" class="ftco-footer ftco-bg-dark ftco-section">-->
+
+<!--</footer>-->
+
+
+<!-- loader -->
+<!--<div th:replace="public/fragments :: loading" id="ftco-loader" class="show fullscreen"></div>-->
+
+</body>
+</html>

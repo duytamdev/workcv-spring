@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Work CV</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap" rel="stylesheet">
+    <th:block th:insert="fragments/common/layout :: head"></th:block>
+
+  <!-- CSS -->
+
+</head>
+<body>
+<th:block th:include="fragments/nav-header :: nav"></th:block>
+<!-- END nav -->
+<div class="hero-wrap img" style="background-image: url(user/assets/images/bg_1.jpg);">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row d-md-flex no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-10 d-flex align-items-center ">
+                <div class="text text-center pt-5 mt-md-5">
+                    <p class="mb-4">Tìm việc làm, Cơ hội việc làm và Nghề nghiệp</p>
+                    <h1 class="mb-5">Cách dễ dàng nhất để có được công việc mới của bạn</h1>
+                    <div class="ftco-counter ftco-no-pt ftco-no-pb">
+                        <div class="row">
+                            <div class="col-md-4 d-flex justify-content-center counter-wrap ">
+                                <div class="block-18">
+                                    <div class="text d-flex">
+                                        <div class="icon mr-2">
+                                            <span class="flaticon-visitor"></span>
+                                        </div>
+                                        <div class="desc text-left">
+<!--                                            <strong class="number" data-number="46" th:text="${numberCandidate}"></strong>-->
+                                            <span>Ứng cử viên</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 d-flex justify-content-center counter-wrap ">
+                                <div class="block-18 text-center">
+                                    <div class="text d-flex">
+                                        <div class="icon mr-2">
+                                            <span class="flaticon-visitor"></span>
+                                        </div>
+                                        <div class="desc text-left">
+<!--                                            <strong class="number" data-number="450" th:text="${numberCompany}"></strong>-->
+                                            <span>Công ty</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 d-flex justify-content-center counter-wrap">
+                                <div class="block-18 text-center">
+                                    <div class="text d-flex">
+                                        <div class="icon mr-2">
+                                            <span class="flaticon-resume"></span>
+                                        </div>
+                                        <div class="desc text-left">
+<!--                                            <strong class="number" data-number="80000" th:text="${numberRecruitment}"></strong>-->
+                                            <span>Tuyển dụng</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <th:block th:include="fragments/common/layout :: search"></th:block>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="ftco-section bg-light">
+    <div class="container">
+        <h4 style="margin-top: -20px">Kết quả tìm kiếm cho : <span th:text="${keySearch}"></span></h4>
+        <div class="row">
+            <div class="col-lg-12 pr-lg-5">
+                <div class="row">
+                    <th:block th:if="${recruitments.size()>0}" th:each="recruitment : ${recruitments}">
+                        <div class="col-md-12 ">
+                            <div class="job-post-item p-4 d-block d-lg-flex align-items-center">
+                                <div class="one-third mb-4 mb-md-0">
+                                    <div class="job-post-item-header align-items-center">
+                                        <span class="subadge" th:text="${recruitment.type}"></span>
+                                        <h2 class="mr-3 text-black" ><a th:text="${recruitment.title}" th:href="${'/recruitment/detail/'} +${recruitment.id}"></a></h2>
+                                    </div>
+                                    <div class="job-post-item-body d-block d-md-flex">
+                                        <div class="mr-3"><span class="icon-layers"></span> <a href="#" th:text="${recruitment.company.companyName}" ></a></div>
+                                        <div><span class="icon-my_location"></span> <span th:text="${recruitment.address}"></span></div>
+                                    </div>
+                                </div>
+                                <input type="hidden" th:id="${'idRe'}+${recruitment.id}" th:value="${recruitment.id}">
+                            </div>
+                        </div><!-- end -->
+
+                    </th:block>
+                    <div   style="text-align: center" th:if="${recruitments.size() == 0}">
+                        <p style="color: red">Không có kết quả nào</p>
+                    </div>
+                </div>
+
+<!--                <div class="row mt-5">-->
+<!--                    <div class="col text-center">-->
+<!--                        <div class="block-27">-->
+<!--                            <ul>-->
+<!--                                <li th:if="${numberPage>0}"><a th:href="@{'/recruitment/search/'+ ${keySearch}(page = ${list.number - 1})}">&lt;</a></li>-->
+<!--                                <th:block th:each="recruitment,state  : ${recruitmentList}">-->
+<!--                                    <li th:class="${numberPage == state.index  ? 'active' : null }"><a th:href="@{'/recruitment/search/'+ ${keySearch}(page = ${state.index})}" th:text="${state.index + 1}"></a></li>-->
+<!--                                </th:block>-->
+<!--                                <li th:if="${numberPage<list.totalPages - 1}"><a th:href="@{'/recruitment/search/'+ ${keySearch}(page = ${list.number + 1})}">&gt;</a></li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+            </div>
+
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
