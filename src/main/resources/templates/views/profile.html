@@ -219,7 +219,7 @@
                 </div>
                 <form th:action="@{/company/save}" th:method="${companyInformation==null ? 'post' : 'put'}"  enctype="multipart/form-data">
                     <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-                    <input type="hidden" th:name="logo" th:value="${companyInformation.logo}" />
+                    <input type="hidden" th:name="logo" th:value="${companyInformation?.logo}" />
 
                     <div th:if="${companyInformation?.id}">
                         <input type="hidden" class="form-control" name="id" th:value="${companyInformation.id}" id="job-title" >
