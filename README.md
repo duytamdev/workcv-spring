@@ -12,11 +12,10 @@ The WorkCV Spring Project offers the following key features:
 - User registration and authentication
 - Create, update, and delete resumes
 - Manage personal information, education, work experience, and skills in a resume
-- Generate and download resumes in different formats (e.g., PDF, Word)
 
 ## Demo Link
 You can access a live demo of the WorkCV Spring Project at the following URL:
-[Demo Link]([https://your-demo-link.com](https://workcv-spring-production.up.railway.app/))
+https://workcv-spring-production.up.railway.app/
 
 ## Deployment Guide (On Local)
 To deploy the WorkCV Spring Project on your local machine, please follow these steps:
