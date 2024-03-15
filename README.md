@@ -26,16 +26,14 @@ git clone https://github.com/duytamdev/workcv-spring.git
 
 2. Install the necessary dependencies. Make sure you have Java and Maven installed on your machine.
 
-3. Configure the database connection in the `application.properties` file. Update the database URL, username, and password according to your setup.
 
-4. Build the project using Maven:
+3. Build the project using Maven:
 mvn clean install
 
 
-5. Run the application:
+4. Run the application:
 mvn spring-boot:run
 
 
-6. Access the application in your web browser at `http://localhost:8080`.
+5. Access the application in your web browser at `http://localhost:8080`.
 
-Please note that these instructions are a general guide, and you may need to adapt them based on your specific environment and setup.
